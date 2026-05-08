@@ -113,15 +113,37 @@
       50% { opacity: 0.3; }
     }
 
-    .emblem {
-      width: 96px;
-      height: 96px;
-      margin: 0 auto 1.8rem;
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
     }
 
-    .emblem svg {
+    .header-center {
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .side-logo {
+      width: 140px;
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+      animation: glow-pulse 3.5s ease-in-out infinite alternate;
+    }
+
+    .emblem {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 1.4rem;
+    }
+
+    .emblem img {
       width: 100%;
       height: 100%;
+      object-fit: contain;
       animation: glow-pulse 3.5s ease-in-out infinite alternate;
     }
 
@@ -329,11 +351,19 @@
     }
 
     /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .side-logo { width: 80px; }
+      .header-row { gap: 1rem; }
+    }
+
     @media (max-width: 560px) {
       .grid { grid-template-columns: 1fr; }
       header { padding: 2.5rem 0 1rem; }
       .corner { display: none; }
-      h1 { font-size: 1.6rem; }
+      h1 { font-size: 1.5rem; }
+      .side-logo { width: 60px; }
+      .header-row { gap: 0.75rem; }
+      .emblem { width: 80px; height: 80px; }
     }
   </style>
 </head>
@@ -369,42 +399,19 @@
         Portal Operacional
       </div>
 
-      <!-- Heraldic Shield -->
-      <div class="emblem">
-        <svg viewBox="0 0 100 118" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Shadow -->
-          <path d="M50 10 L91 26 L91 62 C91 87 69 109 50 116 C31 109 9 87 9 62 L9 26 Z"
-                fill="rgba(0,0,0,0.3)" transform="translate(2,3)"/>
-          <!-- Shield fill -->
-          <path d="M50 10 L91 26 L91 62 C91 87 69 109 50 116 C31 109 9 87 9 62 L9 26 Z"
-                fill="url(#shield-grad)"/>
-          <!-- Shield border -->
-          <path d="M50 10 L91 26 L91 62 C91 87 69 109 50 116 C31 109 9 87 9 62 L9 26 Z"
-                stroke="#D4A93A" stroke-width="2.5" fill="none"/>
-          <!-- Inner border -->
-          <path d="M50 17 L84 31 L84 62 C84 83 65 103 50 109 C35 103 16 83 16 62 L16 31 Z"
-                stroke="rgba(212,169,58,0.28)" stroke-width="1" fill="none"/>
-          <!-- Star -->
-          <path d="M50 36 L53.5 46 L64 46 L55.5 52.5 L58.8 63 L50 57 L41.2 63 L44.5 52.5 L36 46 L46.5 46 Z"
-                fill="#D4A93A" stroke="#F0CE6A" stroke-width="0.5"/>
-          <!-- Road stripe -->
-          <rect x="34" y="74" width="32" height="3" rx="1.5" fill="#F0CE6A" opacity="0.9"/>
-          <!-- Dashed center line -->
-          <line x1="38" y1="82" x2="42" y2="82" stroke="rgba(240,206,106,0.55)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="46" y1="82" x2="50" y2="82" stroke="rgba(240,206,106,0.55)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="54" y1="82" x2="58" y2="82" stroke="rgba(240,206,106,0.55)" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Gradient def -->
-          <defs>
-            <linearGradient id="shield-grad" x1="50" y1="10" x2="50" y2="116" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#1E2A6B" stop-opacity="0.9"/>
-              <stop offset="100%" stop-color="#0e1630" stop-opacity="0.95"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+      <div class="header-row">
+        <img class="side-logo" src="asa_rodoviaria.png" alt="Policiamento Rodoviário SP">
 
-      <h1>5º BPRv</h1>
-      <p class="tagline">O Guardião das Rodovias do Sudoeste Paulista</p>
+        <div class="header-center">
+          <div class="emblem">
+            <img src="logo_coin2.png" alt="5º BPRv — Guardião das Rodovias">
+          </div>
+          <h1>5º BPRv</h1>
+          <p class="tagline">O Guardião das Rodovias do Sudoeste Paulista</p>
+        </div>
+
+        <img class="side-logo" src="logo_5rv.png" alt="5º BPRv Escudo">
+      </div>
 
       <div class="divider">
         <div class="div-line"></div>
