@@ -114,9 +114,9 @@
     }
 
     .header-row {
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
       align-items: center;
-      justify-content: center;
       gap: 2rem;
       margin-bottom: 0.5rem;
     }
@@ -124,6 +124,8 @@
     .header-center {
       text-align: center;
       flex-shrink: 0;
+      justify-self: center;
+      max-width: 460px;
     }
 
     .side-logo {
@@ -136,6 +138,11 @@
 
     .logo-asa {
       width: 210px;
+      justify-self: end;
+    }
+
+    .header-row > .side-logo:not(.logo-asa) {
+      justify-self: start;
     }
 
     .emblem {
@@ -200,15 +207,21 @@
 
     /* ── Cards ── */
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.25rem;
       padding: 0.5rem 0 3rem;
       flex: 1;
+      max-width: 1030px;
+      margin: 0 auto;
     }
 
     .card {
       position: relative;
+      flex: 0 1 330px;
+      max-width: 330px;
+      min-height: 228px;
       background: linear-gradient(145deg,
         rgba(30, 42, 107, 0.55) 0%,
         rgba(14, 22, 52, 0.75) 100%);
@@ -362,12 +375,17 @@
     }
 
     @media (max-width: 600px) {
-      .grid { grid-template-columns: 1fr; }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        max-width: none;
+      }
       header { padding: 2rem 0 0.75rem; }
       .corner { display: none; }
 
       /* Mobile: asa em cima sozinha, depois coin + título + escudo */
       .header-row {
+        display: flex;
         flex-direction: column;
         gap: 0.75rem;
       }
@@ -408,7 +426,11 @@
         letter-spacing: 0.12em;
       }
 
-      .card { padding: 1.4rem 1.2rem; }
+      .card {
+        padding: 1.4rem 1.2rem;
+        max-width: none;
+        min-height: 0;
+      }
       .card-title { font-size: 0.95rem; }
     }
   </style>
